@@ -1,4 +1,4 @@
-//package Media-Player;
+//package Media_Player;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -128,22 +128,25 @@ public class Controller implements Initializable
 
 
     }
-    public void pause()
+    public void pause(ActionEvent event)
     {
         mediaPlayer.pause();
     }
-    public void stop()
+    public void stop(ActionEvent event)
     {
         mediaPlayer.stop();
     }
-    public void fastForward()
+    public void fastForward(ActionEvent event)
     {
         mediaPlayer.setRate(2.0);
     }
-    public void slowRate()
+    public void slowRate(ActionEvent event)
     {
         mediaPlayer.setRate(0.5);
     }
+    public void skip10(ActionEvent event){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));}
+    public void back10(ActionEvent event){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(-10)));}
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
