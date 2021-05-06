@@ -1,4 +1,4 @@
-package sample;
+//package Media-Player;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -56,12 +56,15 @@ public class Controller implements Initializable
             mediaPlayer=new MediaPlayer(media);
             mediaView.setMediaPlayer(mediaPlayer);
 
+            // for height and width
             DoubleProperty widthProperty=mediaView.fitWidthProperty();
             DoubleProperty heightProperty=mediaView.fitHeightProperty();
 
+            // for resizing
             widthProperty.bind(Bindings.selectDouble(mediaView.sceneProperty(),"width"));
             heightProperty.bind(Bindings.selectDouble(mediaView.sceneProperty(),"height"));
 
+            // for volume  control
             volumeSlider.setValue(mediaPlayer.getVolume()*100);
             volumeSlider.valueProperty().addListener(new InvalidationListener() {
                 @Override
