@@ -24,9 +24,12 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import javafx.scene.text.Text;
 
-
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable
@@ -128,25 +131,24 @@ public class Controller implements Initializable
 
 
     }
-    public void pause(ActionEvent event)
+    public void pause()
     {
         mediaPlayer.pause();
     }
-    public void stop(ActionEvent event)
+    public void stop()
     {
         mediaPlayer.stop();
     }
-    public void fastForward(ActionEvent event)
+    public void fastForward()
     {
         mediaPlayer.setRate(2.0);
     }
-    public void slowRate(ActionEvent event)
+    public void slowRate()
     {
         mediaPlayer.setRate(0.5);
     }
-    public void skip10(ActionEvent event){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));}
-    public void back10(ActionEvent event){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(-10)));}
-
+    public void skip10(){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));}
+    public void back10(){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(-10)));}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
