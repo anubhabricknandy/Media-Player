@@ -1,4 +1,4 @@
-package sample;
+//package Media_Player;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -24,9 +24,12 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import javafx.scene.text.Text;
 
-
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable
@@ -56,12 +59,15 @@ public class Controller implements Initializable
             mediaPlayer=new MediaPlayer(media);
             mediaView.setMediaPlayer(mediaPlayer);
 
+            // for height and width
             DoubleProperty widthProperty=mediaView.fitWidthProperty();
             DoubleProperty heightProperty=mediaView.fitHeightProperty();
 
+            // for resizing
             widthProperty.bind(Bindings.selectDouble(mediaView.sceneProperty(),"width"));
             heightProperty.bind(Bindings.selectDouble(mediaView.sceneProperty(),"height"));
 
+            // for volume  control
             volumeSlider.setValue(mediaPlayer.getVolume()*100);
             volumeSlider.valueProperty().addListener(new InvalidationListener() {
                 @Override
@@ -141,6 +147,8 @@ public class Controller implements Initializable
     {
         mediaPlayer.setRate(0.5);
     }
+    public void skip10(){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));}
+    public void back10(){ mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(-10)));}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
